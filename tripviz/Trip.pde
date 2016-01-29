@@ -1,13 +1,19 @@
 class Trip {
   String origin;
   String destination;
+  String durationtext;
+  String timegotext;
+  String timebacktext;
+
+/*  int duration;
   int timego;
   int timeback;
-
-  public Trip(String[] pieces) {
-    origin = pieces[0];
-    destination = pieces[1];
-    timego = int(pieces[2]);
-    timeback = int(pieces[3]);
+*/
+  public Trip(String[] fields) {
+    origin = fields[0];
+    destination = fields[1];
+    durationtext = fields[2];
+    timegotext = fields[3];
+    timebacktext = fields[4];
   }
 }

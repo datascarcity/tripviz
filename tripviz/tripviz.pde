@@ -1,7 +1,7 @@
 /**
  * Tripviz
  * 
- * This project will load datas from a csv file into a trip object and then visualize
+ * This project will load datas from a tsv file into a "Trip" object and then visualize
  * it on geo referenced diagram
  */
 
@@ -14,23 +14,44 @@ int startingEntry = 0;  // Display from this entry number
 
 
 void setup() {
-  size(200, 200);
+  size(500, 500);
   fill(255);
   noLoop();
-  
+/*  
   body = loadFont("TheSans-Plain-12.vlw");
   textFont(body);
-  
-  lines = loadStrings("cars2.tsv");
+*/  
+  lines = loadStrings("enc_trips.tsv");
   trips = new Trip[lines.length];
+  println(lines.length);
   for (int i = 0; i < lines.length; i++) {
-    String[] pieces = split(lines[i], TAB); // Load data into array
-    if (pieces.length == 9) {
-      records[recordCount] = new Record(pieces);
+    String[] fields = split(lines[i], TAB); // Load data into array
+    if (fields.length == 5) {
+      trips[recordCount] = new Trip(lines);
       recordCount++;
     }
   }
-  if (recordCount != records.length) {
-    records = (Record[]) subset(records, 0, recordCount);
+  if (recordCount != trips.length) {
+    trips = (Trip[]) subset(trips, 0, recordCount);
   }
+    println(trips[1].origin);
+    println(trips[2].origin);
+}
+
+void draw() {
+  background(0);
+  for (int i = 0; i < num; i++) {
+    int thisEntry = startingEntry + i;
+    if (thisEntry < recordCount) {
+      text(thisEntry + " > " + trips[thisEntry].origin, 20, 20 + i*20);
+    }
+  }
+}
+
+void mousePressed() {
+  startingEntry += num; 
+  if (startingEntry > trips.length) {
+    startingEntry = 0;  // go back to the beginning
+  } 
+  redraw();
 }
