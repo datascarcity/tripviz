@@ -5,15 +5,15 @@ class Trip {
   String timegotext;
   String timebacktext;
 
-/*  int duration;
+  int duration;
   int timego;
   int timeback;
-*/
-  public Trip(String[] fields) {
-    origin = fields[0];
-    destination = fields[1];
-    durationtext = fields[2];
-    timegotext = fields[3];
-    timebacktext = fields[4];
+  
+  public Trip(String[] pieces) {
+    origin = pieces[0];
+    destination = pieces[1];
+    durationtext = pieces[2];
+    timegotext = pieces[3];
+    timebacktext = pieces[4];
   }
 }

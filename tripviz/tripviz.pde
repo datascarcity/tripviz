@@ -21,21 +21,19 @@ void setup() {
   body = loadFont("TheSans-Plain-12.vlw");
   textFont(body);
 */  
-  lines = loadStrings("enc_trips.tsv");
-  trips = new Trip[lines.length];
+  lines = loadStrings("enc_trips.tsv"); //Loads the data file
+  trips = new Trip[lines.length]; //creates an array of Trip object of "length" elements
   println(lines.length);
-  for (int i = 0; i < lines.length; i++) {
-    String[] fields = split(lines[i], TAB); // Load data into array
-    if (fields.length == 5) {
-      trips[recordCount] = new Trip(lines);
+  for (int i = 0; i < lines.length; i++) { //goes on for the number of trips loaded
+    String[] pieces = split(lines[i], TAB); // Load data into array splitting at the TAB
+    if (pieces.length == 5) {
+      trips[recordCount] = new Trip(pieces);
       recordCount++;
     }
   }
   if (recordCount != trips.length) {
     trips = (Trip[]) subset(trips, 0, recordCount);
   }
-    println(trips[1].origin);
-    println(trips[2].origin);
 }
 
 void draw() {
@@ -43,7 +41,7 @@ void draw() {
   for (int i = 0; i < num; i++) {
     int thisEntry = startingEntry + i;
     if (thisEntry < recordCount) {
-      text(thisEntry + " > " + trips[thisEntry].origin, 20, 20 + i*20);
+      text(thisEntry + " > " + trips[thisEntry].origin + ">" + trips[thisEntry].destination + ">" + trips[thisEntry].durationtext+ ">" + trips[thisEntry].timegotext+ ">" + trips[thisEntry].timebacktext, 20, 20 + i*20);
     }
   }
 }
