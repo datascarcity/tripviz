@@ -15,5 +15,10 @@ class Trip {
     durationtext = pieces[2];
     timegotext = pieces[3];
     timebacktext = pieces[4];
-  }
+   }
 }
+/*
+public int timetoint(String timeintext) {
+ 
+  
+}*/

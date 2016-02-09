@@ -41,7 +41,7 @@ void draw() {
   for (int i = 0; i < num; i++) {
     int thisEntry = startingEntry + i;
     if (thisEntry < recordCount) {
-      text(thisEntry + " > " + trips[thisEntry].origin + ">" + trips[thisEntry].destination + ">" + trips[thisEntry].durationtext+ ">" + trips[thisEntry].timegotext+ ">" + trips[thisEntry].timebacktext, 20, 20 + i*20);
+      text(thisEntry + " > " + trips[thisEntry].origin + ">" + trips[thisEntry].destination + ">" + trips[thisEntry].durationtext+ ">" + trips[thisEntry].timegotext+ ">" + trips[thisEntry].timebacktext + ">" + trips[thisEntry].duration, 20, 20 + i*20);
     }
   }
 }
