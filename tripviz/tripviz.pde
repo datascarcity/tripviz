@@ -29,6 +29,7 @@ void setup() {
     if (pieces.length == 5) {
       trips[recordCount] = new Trip(pieces);
       recordCount++;
+      println(trips[i].duration);
     }
   }
   if (recordCount != trips.length) {
