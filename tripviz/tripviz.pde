@@ -3,24 +3,27 @@
  * 
  * This project will load datas from a tsv file into a "Trip" object and then visualize
  * it on geo referenced diagram
+ * created February 2015
+ * by: Marco Rizzetto
  */
 
+//global variables
 Trip[] trips;
 String[] lines;
 int recordCount;
-PFont body;
 int num = 9; // Display this many entries on each screen.
 int startingEntry = 0;  // Display from this entry number
+int[] goorder; //Array containing the departure sequence 
+int[] backorder; //Array containing the arrival sequence
+int left;
+int right;
 
 
 void setup() {
   size(500, 500);
   fill(255);
   noLoop();
-/*  
-  body = loadFont("TheSans-Plain-12.vlw");
-  textFont(body);
-*/  
+
   lines = loadStrings("enc_trips.tsv"); //Loads the data file
   trips = new Trip[lines.length]; //creates an array of Trip object of "length" elements
   println(lines.length);
@@ -30,11 +33,17 @@ void setup() {
       trips[recordCount] = new Trip(pieces);
       recordCount++;
       println(trips[i].duration);
+      println(trips[i].timego);
+      println(trips[i].timeback);
     }
   }
   if (recordCount != trips.length) {
     trips = (Trip[]) subset(trips, 0, recordCount);
   }
+  println(recordCount);
+  
+  
+  
 }
 
 void draw() {

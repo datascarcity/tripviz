@@ -15,13 +15,15 @@ class Trip {
     durationtext = pieces[2];
     timegotext = pieces[3];
     timebacktext = pieces[4];
-    duration = timetoint(durationtext); //calls the time converter method
+    duration = durationtoint(durationtext); //calls the time converter method
+    timego = hourtoint(timegotext);
+    timeback = hourtoint(timebacktext);
    }
 }
 
-//Method to convert the duration string text to an int number to be used later
-public int timetoint(String timeintext) {
-  int num = 0;
+//Procedure to convert the duration string text to an int number to be used later
+public int durationtoint(String timeintext) {
+  int num = -1;
     if(!timeintext.equals("")) { //checks if the string is empty
       if(timeintext.equals("5 min")){
         num = 5;
@@ -54,5 +56,33 @@ public int timetoint(String timeintext) {
         num = 120;
       }
   }
+ return num;
+}
+
+//Procedure to convert the hour string text to an int number to be used later, it works only with half hour precision, returns -1 if hour doesn't exist
+public int hourtoint(String timeintext) {
+  int num = -1;
+  String it;
+    if(!timeintext.equals("")) { //checks if the string is empty
+      
+      for(int i=0; i <= 9;i++){ //works from 0 to 9
+        it ="0"+ str(i)+":";
+        String[] m = match(timeintext, it);
+        if(m != null){
+          num = i*60;
+        }
+      }
+      for(int i=10; i <= 24;i++){ //works from 10 to 24
+        it =str(i)+":";
+        String[] m = match(timeintext, it);
+        if(m != null){
+          num = i*60;
+        }
+      }
+      String[] m = match(timeintext,":30"); //checks if it is an half hour
+      if(m != null){
+          num = num+30;
+        }
+    }
  return num;
 }
