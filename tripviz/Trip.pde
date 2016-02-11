@@ -1,4 +1,4 @@
-class Trip {
+public class Trip {
   String origin; //origin of the trip
   String destination; //destination of the trip
   String durationtext; //duration of the trip in text format

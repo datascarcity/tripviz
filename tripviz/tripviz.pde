@@ -6,7 +6,11 @@
  * created February 2015
  * by: Marco Rizzetto
  */
-
+ 
+import de.fhpotsdam.unfolding.*;
+import de.fhpotsdam.unfolding.geo.*;
+import de.fhpotsdam.unfolding.utils.*;
+ 
 //global variables
 Trip[] trips;
 String[] lines;
@@ -40,10 +44,7 @@ void setup() {
   if (recordCount != trips.length) {
     trips = (Trip[]) subset(trips, 0, recordCount);
   }
-  println(recordCount);
-  
-  
-  
+  println(recordCount);  
 }
 
 void draw() {
