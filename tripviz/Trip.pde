@@ -1,3 +1,9 @@
+public class Coord {
+  float x;
+  float y;
+  float z;
+}
+
 public class Trip {
   String origin; //origin of the trip
   String destination; //destination of the trip
@@ -9,6 +15,9 @@ public class Trip {
   int timego; //departure time in number, minutes
   int timeback; //arrival time in number, minutes
   
+  Coord origincoo = new Coord();
+  Coord destinationcoo = new Coord();
+  
   public Trip(String[] pieces) {
     origin = pieces[0];
     destination = pieces[1];
@@ -18,6 +27,8 @@ public class Trip {
     duration = durationtoint(durationtext); //calls the time converter method
     timego = hourtoint(timegotext);
     timeback = hourtoint(timebacktext);
+    origincoo = placetocoord(origin);
+    destinationcoo = placetocoord(destination);
    }
 }
 

@@ -6,6 +6,7 @@
  * created February 2015
  * by: Marco Rizzetto
  */
+import de.looksgood.ani.*;
 
 //global variables
 Trip[] trips;
@@ -20,12 +21,18 @@ float y = 20;
 float dia = 100;
 PFont body;
 
+  float ox;
+  float oy;
+  float dx;
+  float dy;
+
 void setup() {
+  background(255);
   size(500, 500);
-  fill(255);
-  loop();
-  stroke(150);
-  textSize(12);
+  fill(0);
+  stroke(0);
+  textSize(8);
+  smooth();
 
   lines = loadStrings("enc_trips.tsv"); //Loads the data file
   trips = new Trip[lines.length]; //creates an array of Trip object of "length" elements
@@ -40,18 +47,27 @@ void setup() {
   if (recordCount != trips.length) {
     trips = (Trip[]) subset(trips, 0, recordCount);
   }
+  Ani.init(this);
 }
 
 void draw() {
+
   for(int i = 0; i < 1440; i = i+30) {
     for(int j=0; j < recordCount; j++) {
       if(trips[j].timego == i) {
-        //ellipse(x,y,dia,dia);
-        //dia=random(50,150);
-        //println(trips[j].timego);
-        text(trips[j].timego + "@" + trips[j].origin + " to " + trips[j].destination, 20,y);
-        y = y+20;
+        ox = trips[j].origincoo.x;
+        oy = trips[j].origincoo.y;
+        dx = trips[j].destinationcoo.x;
+        dy = trips[j].destinationcoo.y;
+        //line(trips[j].origincoo.x, trips[j].origincoo.y, trips[j].destinationcoo.x,trips[j].destinationcoo.y);
+        ellipse(ox, oy, 50,50);
+        thread("move");
       }
     }
   }
+}
+
+public void move(){
+     Ani.to(this, 1.5, "ox", dx);
+     Ani.to(this, 1.5, "oy", dy);
 }
