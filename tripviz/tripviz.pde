@@ -6,14 +6,11 @@
  * created February 2015
  * by: Marco Rizzetto
  */
-import de.looksgood.ani.*;
 
 //global variables
 Trip[] trips;
 String[] lines;
 int recordCount;
-int num = 9; // Display this many entries on each screen.
-int startingEntry = 0;  // Display from this entry number
 PFont body;
 float ox;
 float oy;
@@ -28,8 +25,8 @@ void setup() {
   fill(0);
   stroke(0);
   textSize(12);
-  smooth();
-
+  frameRate(120);
+  
   lines = loadStrings("enc_trips.tsv"); //Loads the data file
   trips = new Trip[lines.length]; //creates an array of Trip object of "length" elements
   println(lines.length);
@@ -43,7 +40,6 @@ void setup() {
   if (recordCount != trips.length) {
     trips = (Trip[]) subset(trips, 0, recordCount);
   }
-  Ani.init(this);
 }
 
 void draw() {
@@ -57,7 +53,8 @@ void draw() {
   dx = trips[position].destinationcoo.x;
   dy = trips[position].destinationcoo.y;
   //line(trips[j].origincoo.x, trips[j].origincoo.y, trips[j].destinationcoo.x,trips[j].destinationcoo.y);
-  ellipse(ox, oy, 50,50);
+  fill(0);
+  line(ox, oy, dx, dy);
   /*text(trips[position].origin, ox, oy);
   fill(100);
   ellipse(ox, oy, 50,50);
@@ -68,5 +65,25 @@ void draw() {
     position = 0;
   }
   position++;
-  text(time, 50,400);
+  fill(255);
+  stroke(255);
+  rect(40,380,50,30);
+  fill(0);
+  stroke(0);
+  DigitalHour(time);
+  println(frameRate);
+}
+
+void DigitalHour (int time) {
+  int h = time / 60;
+  int m = time % 60;
+  if(h < 10 && m < 10){
+    text("0" + h + ":" + "0" + m, 50,400); //<>//
+  }
+  else if(h<10){ //<>//
+     text("0" + h + ":" + m, 50,400);
+  }
+  else { //<>//
+     text(h + ":" + m, 50,400);
+  }  
 }
