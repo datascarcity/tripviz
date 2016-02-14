@@ -14,24 +14,20 @@ String[] lines;
 int recordCount;
 int num = 9; // Display this many entries on each screen.
 int startingEntry = 0;  // Display from this entry number
-int left;
-int right;
-float x = 250;
-float y = 20;
-float dia = 100;
 PFont body;
-
-  float ox;
-  float oy;
-  float dx;
-  float dy;
+float ox;
+float oy;
+float dx;
+float dy;
+int time = 0;
+int position = 0;
 
 void setup() {
   background(255);
   size(500, 500);
   fill(0);
   stroke(0);
-  textSize(8);
+  textSize(12);
   smooth();
 
   lines = loadStrings("enc_trips.tsv"); //Loads the data file
@@ -51,23 +47,26 @@ void setup() {
 }
 
 void draw() {
-
-  for(int i = 0; i < 1440; i = i+30) {
-    for(int j=0; j < recordCount; j++) {
-      if(trips[j].timego == i) {
-        ox = trips[j].origincoo.x;
-        oy = trips[j].origincoo.y;
-        dx = trips[j].destinationcoo.x;
-        dy = trips[j].destinationcoo.y;
-        //line(trips[j].origincoo.x, trips[j].origincoo.y, trips[j].destinationcoo.x,trips[j].destinationcoo.y);
-        ellipse(ox, oy, 50,50);
-        thread("move");
-      }
-    }
+  if(time == 1440){
+    delay (1000);
+    time = 0;
   }
-}
-
-public void move(){
-     Ani.to(this, 1.5, "ox", dx);
-     Ani.to(this, 1.5, "oy", dy);
+  if(trips[position].timego == time) {
+  ox = trips[position].origincoo.x;
+  oy = trips[position].origincoo.y;
+  dx = trips[position].destinationcoo.x;
+  dy = trips[position].destinationcoo.y;
+  //line(trips[j].origincoo.x, trips[j].origincoo.y, trips[j].destinationcoo.x,trips[j].destinationcoo.y);
+  ellipse(ox, oy, 50,50);
+  /*text(trips[position].origin, ox, oy);
+  fill(100);
+  ellipse(ox, oy, 50,50);
+  text(trips[position].destination, dx, dy);*/
+  }
+  if(position == recordCount-1) {
+  time = time+30;
+    position = 0;
+  }
+  position++;
+  text(time, 50,400);
 }
