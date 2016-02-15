@@ -48,17 +48,19 @@ void draw() {
     time = 0;
   }
   if(trips[position].timego == time) {
-  ox = trips[position].origincoo.x;
+  /* ox = trips[position].origincoo.x;
   oy = trips[position].origincoo.y;
   dx = trips[position].destinationcoo.x;
   dy = trips[position].destinationcoo.y;
   //line(trips[j].origincoo.x, trips[j].origincoo.y, trips[j].destinationcoo.x,trips[j].destinationcoo.y);
   fill(0);
-  line(ox, oy, dx, dy);
+  line(ox, oy, dx, dy);*/
   /*text(trips[position].origin, ox, oy);
   fill(100);
   ellipse(ox, oy, 50,50);
   text(trips[position].destination, dx, dy);*/
+ trips[position].update();
+ trips[position].display();
   }
   if(position == recordCount-1) {
   time = time+30;
@@ -72,18 +74,4 @@ void draw() {
   stroke(0);
   DigitalHour(time);
   println(frameRate);
-}
-
-void DigitalHour (int time) {
-  int h = time / 60;
-  int m = time % 60;
-  if(h < 10 && m < 10){
-    text("0" + h + ":" + "0" + m, 50,400); //<>//
-  }
-  else if(h<10){ //<>//
-     text("0" + h + ":" + m, 50,400);
-  }
-  else { //<>//
-     text(h + ":" + m, 50,400);
-  }  
 }
