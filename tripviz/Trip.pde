@@ -19,6 +19,9 @@ public class Trip {
   Coord destinationcoo = new Coord();
   Coord deltacoo = new Coord();
   
+  boolean moving = false; //flag true if it's moving
+  boolean going = true; //flag true if it's going, false if it's coming back
+  
   public Trip(String[] pieces) {
     origin = pieces[0];
     destination = pieces[1];
@@ -31,17 +34,21 @@ public class Trip {
     origincoo = placetocoord(origin); //origin coordinates
     destinationcoo = placetocoord(destination); //destiny coordinates
     deltacoo = origincoo;
+    moving = false;
+    going = true;
    }
    
    // Custom method for updating the variables
   void update() {
-    deltacoo.x = deltacoo.x + (10);
-    deltacoo.y = deltacoo.y + (10);
+    deltacoo.x = deltacoo.x + (1);
+    println(deltacoo.x);
+    deltacoo.y = deltacoo.y + (1);
+    println(deltacoo.y);
   }
   
   // Custom method for drawing the object
   void display() {
-    fill(255);
+    fill(0);
     ellipse( deltacoo.x, deltacoo.y, 6, 6);
   }
 }
