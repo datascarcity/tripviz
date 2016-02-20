@@ -20,7 +20,7 @@ int time = 0;
 
 void setup() {
   background(255);
-  size(500, 500);
+  size(600, 600);
   fill(0);
   stroke(0);
   textSize(12);
@@ -45,17 +45,20 @@ void draw() {
   for(int position = 0; position < recordCount; position++){
     
   if(trips[position].timego == time) {
-  trips[position].going = true;
+  trips[position].moving = true;
   }
+  if(trips[position].moving == true){
  trips[position].update();
- trips[position].display();
-  } //<>//
- //<>//
-  time = time+30;
+ trips[position].display(); //<>//
+  }
+  }
+
+  time = time+10;
   if(time == 1440){
     delay (1000);
     time = 0;
-  }
+    background(255);
+}
   
   fill(255);
   stroke(255);

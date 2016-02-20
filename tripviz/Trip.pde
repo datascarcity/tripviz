@@ -22,6 +22,8 @@ public class Trip {
   boolean moving = false; //flag true if it's moving
   boolean going = true; //flag true if it's going, false if it's coming back
   
+  float deltax, deltay;
+  
   public Trip(String[] pieces) {
     origin = pieces[0];
     destination = pieces[1];
@@ -34,21 +36,24 @@ public class Trip {
     origincoo = placetocoord(origin); //origin coordinates
     destinationcoo = placetocoord(destination); //destiny coordinates
     deltacoo = origincoo;
+    deltax = (origincoo.x-destinationcoo.x)/(duration*10);
+    deltay = (origincoo.y-destinationcoo.y)/(duration*10);
+    
     moving = false;
     going = true;
    }
    
    // Custom method for updating the variables
   void update() {
-    deltacoo.x = deltacoo.x + (1);
+    deltacoo.x = deltacoo.x + (deltax);
     println(deltacoo.x);
-    deltacoo.y = deltacoo.y + (1);
+    deltacoo.y = deltacoo.y + (deltay);
     println(deltacoo.y);
   }
   
   // Custom method for drawing the object
   void display() {
     fill(0);
-    ellipse( deltacoo.x, deltacoo.y, 6, 6);
+    ellipse( deltacoo.x, deltacoo.y, 2, 2);
   }
 }
