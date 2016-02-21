@@ -36,8 +36,8 @@ public class Trip {
     origincoo = placetocoord(origin); //origin coordinates
     destinationcoo = placetocoord(destination); //destiny coordinates
     deltacoo = origincoo;
-    deltax = (origincoo.x-destinationcoo.x)/(duration*10);
-    deltay = (origincoo.y-destinationcoo.y)/(duration*10);
+    deltax = (destinationcoo.x-origincoo.x)/(duration)*5;
+    deltay = (destinationcoo.y-origincoo.y)/(duration)*5;
     
     moving = false;
     going = true;
@@ -45,15 +45,33 @@ public class Trip {
    
    // Custom method for updating the variables
   void update() {
+    if(going){
     deltacoo.x = deltacoo.x + (deltax);
-    println(deltacoo.x);
     deltacoo.y = deltacoo.y + (deltay);
-    println(deltacoo.y);
+    moving = !collision(deltacoo.x, deltacoo.y, destinationcoo.x, destinationcoo.y, 2);
+    } else
+    {
+    deltacoo.x = deltacoo.x - (deltax);
+    deltacoo.y = deltacoo.y - (deltay);
+    moving = !collision(deltacoo.x, deltacoo.y, origincoo.x, origincoo.y, 2);
+    } //<>//
   }
   
   // Custom method for drawing the object
   void display() {
     fill(0);
+    if(!going) {fill(100, 10, 10);ellipse( deltacoo.x, deltacoo.y, 6, 6);}
     ellipse( deltacoo.x, deltacoo.y, 2, 2);
+  }
+  
+  
+  boolean collision(float bulletx, float bullety, float targetx, float targety, float tolerance) {
+  float dx,dy;
+  dx = targetx-bulletx;
+  dy = targety-bullety;
+    if(sqrt((dx*dx)+(dy*dy))<= tolerance){
+    return true;
+  }
+  else return false;
   }
 }

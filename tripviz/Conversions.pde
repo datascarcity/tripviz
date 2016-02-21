@@ -9,8 +9,8 @@ Coord placetocoord(String placetext){
      tempcoord.z = 0;
    }
    else if(placetext.equals("Boquerón")) {
-     tempcoord.x = 200;
-     tempcoord.y = 200;
+     tempcoord.x = 400;
+     tempcoord.y = 400;
      tempcoord.z = 0;
    }
    else if(placetext.equals("Buena Vista")) {
@@ -29,8 +29,8 @@ Coord placetocoord(String placetext){
      tempcoord.z = 0;
    }
    else if(placetext.equals("Cambyreta (distrito)")) {
-     tempcoord.x = 0;
-     tempcoord.y = 0;
+     tempcoord.x = 500;
+     tempcoord.y = 300;
      tempcoord.z = 0;
    }
    else if(placetext.equals("Capitan Miranda (distrito)")) {
@@ -79,23 +79,23 @@ Coord placetocoord(String placetext){
      tempcoord.z = 0;
    }
    else if(placetext.equals("Fátima")) {
-     tempcoord.x = 0;
-     tempcoord.y = 0;
+     tempcoord.x = 300;
+     tempcoord.y = 500;
      tempcoord.z = 0;
    }
    else if(placetext.equals("Fram (distrito)")) {
-     tempcoord.x = 0;
-     tempcoord.y = 0;
+     tempcoord.x = 100;
+     tempcoord.y = 100;
      tempcoord.z = 0;
    }
    else if(placetext.equals("Independencia")) {
-     tempcoord.x = 0;
-     tempcoord.y = 0;
+     tempcoord.x = 200;
+     tempcoord.y = 200;
      tempcoord.z = 0;
    }
    else if(placetext.equals("Itá Paso")) {
-     tempcoord.x = 0;
-     tempcoord.y = 0;
+     tempcoord.x = 100;
+     tempcoord.y = 100;
      tempcoord.z = 0;
    }
    else if(placetext.equals("Itacuá")) {
@@ -109,13 +109,13 @@ Coord placetocoord(String placetext){
      tempcoord.z = 0;
    }
    else if(placetext.equals("Juan León Mallorquín")) {
-     tempcoord.x = 0;
-     tempcoord.y = 0;
+     tempcoord.x = 200;
+     tempcoord.y = 200;
      tempcoord.z = 0;
    }
    else if(placetext.equals("La Paz")) {
-     tempcoord.x = 0;
-     tempcoord.y = 0;
+     tempcoord.x = 200;
+     tempcoord.y = 200;
      tempcoord.z = 0;
    }
    else if(placetext.equals("La Victoria")) {
@@ -129,8 +129,8 @@ Coord placetocoord(String placetext){
      tempcoord.z = 0;
    }
    else if(placetext.equals("Mboi Cae")) {
-     tempcoord.x = 0;
-     tempcoord.y = 0;
+     tempcoord.x = 150;
+     tempcoord.y = 150;
      tempcoord.z = 0;
    }
    else if(placetext.equals("Nueva Alborada (distrito)")) {
@@ -184,8 +184,8 @@ Coord placetocoord(String placetext){
      tempcoord.z = 0;
    }
    else if(placetext.equals("San Blas")) {
-     tempcoord.x = 0;
-     tempcoord.y = 0;
+     tempcoord.x = 50;
+     tempcoord.y = 550;
      tempcoord.z = 0;
    }
    else if(placetext.equals("San Cosme y Damián (distrito)")) {
@@ -344,7 +344,7 @@ void DigitalHour (int time) {
   if(h < 10 && m < 10){
     text("0" + h + ":" + "0" + m, 50,400);
   }
-  else if(h<10 && m>10){
+  else if(h<10 && m>9){
      text("0" + h + ":" + m, 50,400);
   }
   else if(m<10){

@@ -26,7 +26,8 @@ void setup() {
   textSize(12);
   frameRate(30);
   
-  lines = loadStrings("enc_trips.tsv"); //Loads the data file
+  //lines = loadStrings("enc_trips.tsv"); //Loads the data file
+  lines = loadStrings("test_trips.tsv");
   trips = new Trip[lines.length]; //creates an array of Trip object of "length" elements
   println(lines.length);
   for (int i = 0; i < lines.length; i++) { //goes on for the number of trips loaded
@@ -42,18 +43,24 @@ void setup() {
 }
 
 void draw() {
+//  background(255,50);
   for(int position = 0; position < recordCount; position++){
     
   if(trips[position].timego == time) {
   trips[position].moving = true;
   }
+  if(trips[position].timeback == time) {
+  trips[position].moving = true;
+  trips[position].going = false; //<>//
+  }
   if(trips[position].moving == true){
  trips[position].update();
- trips[position].display(); //<>//
+ trips[position].display();
   }
   }
 
-  time = time+10;
+  time = time+1;
+  delay(100);
   if(time == 1440){
     delay (1000);
     time = 0;
@@ -66,5 +73,5 @@ void draw() {
   fill(0);
   stroke(0);
   DigitalHour(time);
-  println(frameRate);
+  //println(frameRate);
 }
