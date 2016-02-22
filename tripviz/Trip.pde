@@ -36,8 +36,8 @@ public class Trip {
     origincoo = placetocoord(origin); //origin coordinates
     destinationcoo = placetocoord(destination); //destiny coordinates
     deltacoo = origincoo;
-    deltax = (destinationcoo.x-origincoo.x)/(duration)*5;
-    deltay = (destinationcoo.y-origincoo.y)/(duration)*5;
+    deltax = (destinationcoo.x-origincoo.x)/(duration*10);
+    deltay = (destinationcoo.y-origincoo.y)/(duration*10);
     
     moving = false;
     going = true;
@@ -48,20 +48,20 @@ public class Trip {
     if(going){
     deltacoo.x = deltacoo.x + (deltax);
     deltacoo.y = deltacoo.y + (deltay);
-    moving = !collision(deltacoo.x, deltacoo.y, destinationcoo.x, destinationcoo.y, 2);
-    } else
-    {
+    moving = !collision(deltacoo.x, deltacoo.y, destinationcoo.x, destinationcoo.y, 1);
+    }
+    else {
     deltacoo.x = deltacoo.x - (deltax);
     deltacoo.y = deltacoo.y - (deltay);
-    moving = !collision(deltacoo.x, deltacoo.y, origincoo.x, origincoo.y, 2);
+    moving = !collision(deltacoo.x, deltacoo.y, origincoo.x, origincoo.y, 1);
     } //<>//
   }
   
   // Custom method for drawing the object
   void display() {
     fill(0);
-    if(!going) {fill(100, 10, 10);ellipse( deltacoo.x, deltacoo.y, 6, 6);}
-    ellipse( deltacoo.x, deltacoo.y, 2, 2);
+    if(!going) {fill(100, 10, 10);ellipse( deltacoo.x, deltacoo.y, 6, 6);} else
+    ellipse( deltacoo.x, deltacoo.y, 1, 1);
   }
   
   

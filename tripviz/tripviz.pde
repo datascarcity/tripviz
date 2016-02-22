@@ -25,7 +25,7 @@ void setup() {
   fill(0);
   stroke(0);
   textSize(12);
-  frameRate(30);
+  frameRate(60);
   img = loadImage("DelimitacionBarriosEncuestaV1.png");
   image(img, 0,0);
   
@@ -47,27 +47,29 @@ void setup() {
 
 void draw() {
 //  background(255,50);
+   
   for(int position = 0; position < recordCount; position++){
-    
-  if(trips[position].timego == time) {
+    if(trips[position].timego == time) {
+            // line(trips[position].origincoo.x,trips[position].origincoo.y,trips[position].destinationcoo.x,trips[position].destinationcoo.y); //temporary test
   trips[position].moving = true;
   }
-  if(trips[position].timeback == time) {
+  
+  if(trips[position].timeback == time && trips[position].timeback > trips[position].timego) {
   trips[position].moving = true;
-  trips[position].going = false; //<>//
+  trips[position].going = false;
   }
   if(trips[position].moving == true){
  trips[position].update();
- trips[position].display();
+ trips[position].display(); //<>//
   }
   }
-
   time = time+1;
-  delay(100);
+  delay(10);
   if(time == 1440){
     delay (1000);
     time = 0;
     background(255);
+    image(img, 0,0);
 }
   
   fill(255);

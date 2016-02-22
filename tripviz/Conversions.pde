@@ -4,8 +4,8 @@ Coord placetocoord(String placetext){
   Coord tempcoord = new Coord();
   if(!placetext.equals("")) {
    if(placetext.equals("Gral. Bernardino Caballero")) {
-     tempcoord.x = 200;
-     tempcoord.y = 200;
+     tempcoord.x = 350;
+     tempcoord.y = 540;
      tempcoord.z = 0;
    }
    else if(placetext.equals("Boquerón")) {
