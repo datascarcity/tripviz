@@ -17,17 +17,20 @@ float oy;
 float dx;
 float dy;
 int time = 0;
+PImage img;
 
 void setup() {
   background(255);
-  size(600, 600);
+  size(554, 800);
   fill(0);
   stroke(0);
   textSize(12);
   frameRate(30);
+  img = loadImage("DelimitacionBarriosEncuestaV1.png");
+  image(img, 0,0);
   
-  //lines = loadStrings("enc_trips.tsv"); //Loads the data file
-  lines = loadStrings("test_trips.tsv");
+  lines = loadStrings("enc_trips.tsv"); //Loads the data file
+  //lines = loadStrings("test_trips.tsv");
   trips = new Trip[lines.length]; //creates an array of Trip object of "length" elements
   println(lines.length);
   for (int i = 0; i < lines.length; i++) { //goes on for the number of trips loaded
