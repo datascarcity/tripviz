@@ -30,6 +30,10 @@ public class Trip {
     durationtext = pieces[2];
     timegotext = pieces[3];
     timebacktext = pieces[4];
+   }
+   
+   //Custom method to set and reset the variables
+   void set() {
     duration = durationtoint(durationtext); //calls the time converter method
     timego = hourtoint(timegotext); //time converted in minutes
     timeback = hourtoint(timebacktext); //time converted in minutes
@@ -37,8 +41,7 @@ public class Trip {
     destinationcoo = placetocoord(destination); //destiny coordinates
     deltacoo = origincoo;
     deltax = (destinationcoo.x-origincoo.x)/(duration*10);
-    deltay = (destinationcoo.y-origincoo.y)/(duration*10);
-    
+    deltay = (destinationcoo.y-origincoo.y)/(duration*10);   
     moving = false;
     going = true;
    }
@@ -46,9 +49,10 @@ public class Trip {
    // Custom method for updating the variables
   void update() {
     if(going){
+    moving = !collision(deltacoo.x, deltacoo.y, destinationcoo.x, destinationcoo.y, 1);
     deltacoo.x = deltacoo.x + (deltax);
     deltacoo.y = deltacoo.y + (deltay);
-    moving = !collision(deltacoo.x, deltacoo.y, destinationcoo.x, destinationcoo.y, 1);
+
     }
     else {
     deltacoo.x = deltacoo.x - (deltax);
@@ -59,17 +63,21 @@ public class Trip {
   
   // Custom method for drawing the object
   void display() {
+    noStroke();
     fill(0);
-    if(!going) {fill(100, 10, 10);ellipse( deltacoo.x, deltacoo.y, 6, 6);} else
+    if(!going) {
+    fill(204, 102, 0);
+    ellipse( deltacoo.x, deltacoo.y, 1, 1);
+  } else
     ellipse( deltacoo.x, deltacoo.y, 1, 1);
   }
   
   
   boolean collision(float bulletx, float bullety, float targetx, float targety, float tolerance) {
   float dx,dy;
-  dx = targetx-bulletx;
-  dy = targety-bullety;
-    if(sqrt((dx*dx)+(dy*dy))<= tolerance){
+  dx = abs(targetx-bulletx);
+  dy = abs(targety-bullety);
+    if(sqrt(sq(dx)+sq(dy))< tolerance){
     return true;
   }
   else return false;

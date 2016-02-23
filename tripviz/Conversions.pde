@@ -34,13 +34,13 @@ Coord placetocoord(String placetext){
      tempcoord.z = 0;
    }
    else if(placetext.equals("Capitan Miranda (distrito)")) {
-     tempcoord.x = 0;
+     tempcoord.x = 554;
      tempcoord.y = 0;
      tempcoord.z = 0;
    }
    else if(placetext.equals("Carmen del Paraná (distrito)")) {
      tempcoord.x = 0;
-     tempcoord.y = 0;
+     tempcoord.y = 200;
      tempcoord.z = 0;
    }
    else if(placetext.equals("Catedral")) {
@@ -60,7 +60,7 @@ Coord placetocoord(String placetext){
    }
    else if(placetext.equals("Cnel Bogado")) {
      tempcoord.x = 0;
-     tempcoord.y = 0;
+     tempcoord.y = 100;
      tempcoord.z = 0;
    }
    else if(placetext.equals("Cuatro Potrero")) {
@@ -84,7 +84,7 @@ Coord placetocoord(String placetext){
      tempcoord.z = 0;
    }
    else if(placetext.equals("Fram (distrito)")) {
-     tempcoord.x = 0;
+     tempcoord.x = 300;
      tempcoord.y = 0;
      tempcoord.z = 0;
    }
@@ -134,8 +134,8 @@ Coord placetocoord(String placetext){
      tempcoord.z = 0;
    }
    else if(placetext.equals("Nueva Alborada (distrito)")) {
-     tempcoord.x = 0;
-     tempcoord.y = 0;
+     tempcoord.x = 554;
+     tempcoord.y = 400;
      tempcoord.z = 0;
    }
    else if(placetext.equals("Nueva Esperanza")) {
@@ -190,7 +190,7 @@ Coord placetocoord(String placetext){
    }
    else if(placetext.equals("San Cosme y Damián (distrito)")) {
      tempcoord.x = 0;
-     tempcoord.y = 0;
+     tempcoord.y = 400;
      tempcoord.z = 0;
    }
    else if(placetext.equals("San Isidro")) {
@@ -204,8 +204,8 @@ Coord placetocoord(String placetext){
      tempcoord.z = 0;
    }
    else if(placetext.equals("San Juan del Paraná (distrito)")) {
-     tempcoord.x = 0;
-     tempcoord.y = 0;
+     tempcoord.x = 200;
+     tempcoord.y = 400;
      tempcoord.z = 0;
    }
    else if(placetext.equals("San Luis")) {
@@ -264,8 +264,8 @@ Coord placetocoord(String placetext){
      tempcoord.z = 0;
    }
    else if(placetext.equals("Otros distritos de Itapúa")) {
-     tempcoord.x = 0;
-     tempcoord.y = 0;
+     tempcoord.x = 500;
+     tempcoord.y = 500;
      tempcoord.z = 0;
    }
   }
@@ -342,15 +342,15 @@ void DigitalHour (int time) {
   int h = time / 60;
   int m = time % 60;
   if(h < 10 && m < 10){
-    text("0" + h + ":" + "0" + m, 50,400);
+    text("0" + h + ":" + "0" + m, 50,750);
   }
   else if(h<10 && m>9){
-     text("0" + h + ":" + m, 50,400);
+     text("0" + h + ":" + m, 50,750);
   }
   else if(m<10){
-     text(h + ":0" + m, 50,400);  
+     text(h + ":0" + m, 50,750);  
   }
   else {
-     text(h + ":" + m, 50,400);
+     text(h + ":" + m, 50,750);
   }  
 }
